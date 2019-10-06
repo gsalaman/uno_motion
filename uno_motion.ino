@@ -22,6 +22,6 @@ void loop()
 
   my_servo.write(servo_val);
 
-  delay(1);
+  delay(10);
 
 }
