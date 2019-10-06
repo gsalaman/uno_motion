@@ -3,12 +3,29 @@
 const int ANALOG_PIN = A0; 
 #define SERVO_PIN 12
 
+#define STEP_PIN  2
+#define DIR_PIN   3
+#define MS1_PIN   4
+#define MS2_PIN   5  
+#define ENABLE_PIN 6
+
 Servo my_servo;
 
 void setup() 
 {
   Serial.begin(9600);
   my_servo.attach(SERVO_PIN);
+
+  pinMode(STEP_PIN, OUTPUT);
+  pinMode(DIR_PIN, OUTPUT);
+  pinMode(MS1_PIN, OUTPUT);
+  pinMode(MS2_PIN, OUTPUT);
+  pinMode(ENABLE_PIN, OUTPUT);
+
+  //set for full step.
+  digitalWrite(ENABLE_PIN, LOW);
+  digitalWrite(MS1_PIN, LOW);
+  digitalWrite(MS2_PIN, LOW);
 }
 
 void loop() 
@@ -22,6 +39,9 @@ void loop()
 
   my_servo.write(servo_val);
 
+  digitalWrite(STEP_PIN, HIGH);
+  delay(1);
+  digitalWrite(STEP_PIN,LOW);
   delay(1);
 
 }
