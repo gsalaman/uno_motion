@@ -22,10 +22,10 @@ void setup()
   pinMode(MS2_PIN, OUTPUT);
   pinMode(ENABLE_PIN, OUTPUT);
 
-  //set for full step.
+  //set step size.
   digitalWrite(ENABLE_PIN, LOW);
-  digitalWrite(MS1_PIN, LOW);
-  digitalWrite(MS2_PIN, LOW);
+  digitalWrite(MS1_PIN, HIGH);
+  digitalWrite(MS2_PIN, HIGH);
 }
 
 void loop() 
@@ -40,8 +40,8 @@ void loop()
   my_servo.write(servo_val);
 
   digitalWrite(STEP_PIN, HIGH);
-  delay(1);
+  delayMicroseconds(50);
   digitalWrite(STEP_PIN,LOW);
-  delay(1);
+  delayMicroseconds(50);
 
 }
